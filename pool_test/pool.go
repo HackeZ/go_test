@@ -4,6 +4,7 @@ import (
 	"container/list"
 	"errors"
 	"log"
+	"sync"
 )
 
 var (
@@ -29,16 +30,24 @@ type objectPool struct {
 	Size     int
 	Allocate Allocate
 	FreeList *list.List
+	mu       sync.Mutex
 }
 
 func (p *objectPool) Borrow() (*Object, error) {
+	// Lock It.
+	p.mu.Lock()
 	elem := p.FreeList.Front()
 	if elem == nil {
 		return nil, ErrNoMoreObject
 	}
 
 	obj := p.FreeList.Remove(elem)
+
+	// Unlock It.
+	p.mu.Unlock()
+
 	o := obj.(*Object)
+	log.Println("A Object Borrow in Pool")
 
 	return o, nil
 }
@@ -48,7 +57,11 @@ func (p *objectPool) Return(obj *Object) error {
 		return ErrNoMoreSpace
 	}
 
+	p.mu.Lock()
 	p.FreeList.PushBack(obj)
+	p.mu.Unlock()
+
+	log.Println("A Object Return in Pool")
 	return nil
 }
 
