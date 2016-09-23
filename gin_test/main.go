@@ -23,7 +23,7 @@ func main() {
 	// ===-                   -===
 	// Redirect to /welcome
 	router.GET("/", func(c *gin.Context) {
-		c.Redirect(http.StatusMovedPermanently, "/welcome/hackerz/")
+		c.Redirect(http.StatusMovedPermanently, "/welcome/hackerz")
 	})
 	// Handle Status File
 	router.StaticFile("/favicon.ico", "./upload/z.ico")
@@ -39,10 +39,11 @@ func main() {
 		// Handle Param
 		name := c.Param("name")
 		action := c.Param("action")
+		fmt.Println(action)
 		// Handle Query
 		mess := c.DefaultQuery("mess", "nothing")
 		// lastname := c.Query("lastname") // shortcut for c.Request.URL.Query().Get("firstname")
-		c.String(http.StatusOK, "Hei %s, you are %sing now which message is %s", name, action, mess)
+		c.String(http.StatusOK, "Hei %s, you are %sing now which message is \"%s\"", name, action, mess)
 	})
 	// ===-                   -===
 	// ===- Handle GET Method -===
