@@ -48,11 +48,14 @@ func RunRouterMiddleware(port string) {
 	r.Run(port)
 }
 
+// MyBenchLogger benchmark middleware 1.
 func MyBenchLogger() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		c.String(http.StatusOK, "Benmark Middleware 1.\n")
 	}
 }
+
+// AuthRequired ...
 func AuthRequired() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		c.String(http.StatusOK, "Auth Middleware 1.\n")
