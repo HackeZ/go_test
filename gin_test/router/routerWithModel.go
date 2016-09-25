@@ -18,8 +18,8 @@ type Login struct {
 
 // RunRouterWithModel ..
 // @param port
-// $ curl -d '{"user":"hackerz", "password":"123"}' 127.0.0.1:port/loginJSON
-// $ curl --form user=hackerz --form password=123 127.0.0.1:8080/loginForm
+// $ curl -d '{"user":"hackerz", "password":"123"}' http://127.0.0.1:port/loginJSON
+// $ curl --form user=hackerz --form password=123 http://127.0.0.1:8080/loginForm
 func RunRouterWithModel(port string) {
 
 	if port == "" || port[0] != ':' {
