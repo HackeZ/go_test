@@ -53,10 +53,10 @@ func RunRouterRendering(port string) {
 	})
 
 	// HTML Rendering
-	r.LoadHTMLGlob("templates/*/*")
+	r.LoadHTMLGlob("templates/**/*")
 	//router.LoadHTMLFiles("templates/template1.html", "templates/template2.html")
 	r.GET("/index", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.tmpl", gin.H{
+		c.HTML(http.StatusOK, "index/index.tmpl", gin.H{
 			"title": "Main",
 		})
 	})
