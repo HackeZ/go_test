@@ -5,5 +5,7 @@ import (
 )
 
 func main() {
-	bu.BadBufferUsage()
+	// bu.BadBufferUsage()
+	// bu.GoodBufferUsage()
+	bu.BufferInAction()
 }
