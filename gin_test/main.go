@@ -14,7 +14,7 @@ const (
 
 func main() {
 	// r.RunRouterDefault(ServerAddrPort)
-	// r.RunRouterMiddleware(ServerAddrPort)
+	r.RunRouterMiddleware(ServerAddrPort)
 	// r.RunRouterWithModel(ServerAddrPort)
-	r.RunRouterRendering(ServerAddrPort)
+	// r.RunRouterRendering(ServerAddrPort)
 }
