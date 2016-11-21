@@ -1,0 +1,5 @@
+BenchmarkLogByStitchString2-4   	   20000	     88505 ns/op
+BenchmarkLogByMultiString2-4    	   20000	     95570 ns/op
+BenchmarkLogByFormatString-4    	   20000	     90442 ns/op
+PASS
+ok  	go_test/stringTest	8.320s
