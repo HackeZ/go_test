@@ -43,9 +43,13 @@ func RunRouterMiddleware(port string) {
 		// nested group
 		testing := authorized.Group("testing")
 		testing.GET("/analytics", analyticsEndpoint)
+
+		test := authorized.Group("test")
+		test.POST("/mobile")
+
 	}
 
-	r.Run(port)
+	log.Fatal(r.Run(port))
 }
 
 // MyBenchLogger benchmark middleware 1.
@@ -76,4 +80,7 @@ func readEndpoint(c *gin.Context) {
 }
 func analyticsEndpoint(c *gin.Context) {
 	c.String(http.StatusOK, "Auth Middleware Analytics Point.")
+}
+func mobile(c *gin.Context) {
+	c.GetPostForm()
 }

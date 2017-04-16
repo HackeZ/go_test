@@ -1,12 +1,10 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
 	fmt.Println("Hessian Test Start")
-	// EncodeAndDecodeTest()
+	//EncodeAndDecodeTest()
 	TransmissionTest()
 	fmt.Println("Hessian Test End")
 }

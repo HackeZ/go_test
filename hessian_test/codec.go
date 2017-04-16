@@ -4,32 +4,42 @@ import (
 	"fmt"
 	"strings"
 
-	gh "github.com/wahahajun/gohessian"
+	//gh "github.com/hackez/gohessian"
+	gh "gohessian"
 )
 
 const (
 	BeforeHessianString  string  = "1plus2=三abc你好吗"
 	BeforeHessianInt     int     = 10
-	BeforeHessianInt32   int32   = 11
+	BeforeHessianInt32   int32   = 512
 	BeforeHessianInt64   int64   = 12
 	BeforeHessianFloat32 float32 = 15.1
 	BeforeHessianFloat64 float64 = 15.2
 )
 
+var BeforeHessianObject struct {
+	color string
+	model string
+	Type  string
+}
+
 func EncodeAndDecodeTest() {
+	//fmt.Println("================")
+	//testStringInHessian()
+	//fmt.Println("================")
+	//testIntInHessian()
+	//fmt.Println("================")
+	//testInt32InHessian()
+	//fmt.Println("================")
+	//testInt64InHessian()
+	//fmt.Println("================")
+	//testFloat32InHessian()
+	//fmt.Println("================")
+	//testFloat64InHessian()
+	//fmt.Println("================")
+	testObjectInHessian()
 	fmt.Println("================")
-	testStringInHessian()
-	fmt.Println("================")
-	testIntInHessian()
-	fmt.Println("================")
-	testInt32InHessian()
-	fmt.Println("================")
-	testInt64InHessian()
-	fmt.Println("================")
-	testFloat32InHessian()
-	fmt.Println("================")
-	testFloat64InHessian()
-	fmt.Println("================")
+
 }
 
 func testStringInHessian() {
@@ -52,8 +62,8 @@ func testStringInHessian() {
 		return
 	}
 	fmt.Println("Success Hessian")
-}
 
+}
 func testIntInHessian() {
 	fmt.Println("Hessian Test For Int")
 	bytes, err := gh.Encode(BeforeHessianInt)
@@ -162,4 +172,23 @@ func testFloat64InHessian() {
 		return
 	}
 	fmt.Println("Success Hessian")
+}
+
+func testObjectInHessian() {
+	BeforeHessianObject.color = "red"
+	BeforeHessianObject.model = "corvette"
+	BeforeHessianObject.Type = "example.Car"
+	fmt.Println("Hessian Test for Object")
+	if bs, err := gh.Encode(BeforeHessianObject); err != nil {
+		fmt.Println("Bad Hessian Encode in Object, err =>", err)
+		return
+	} else {
+		fmt.Println("bytes of bs => ", bs)
+		fmt.Print("Encode Object Result => ")
+		for _, v := range bs {
+			fmt.Printf("%x ", v)
+		}
+		fmt.Println()
+		fmt.Println("string of bs => ", string(bs))
+	}
 }
