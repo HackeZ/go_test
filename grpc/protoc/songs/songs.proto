@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package songs;
+
+// define songs service
+service SongListService {
+    // return the list of song belong to this singer
+    rpc ListSongs (SingerID) returns (SongList) {}
+    // return a song belong to this singer
+    rpc GetSongs (SingerID) returns (stream Song) {}
+}
+
+message SingerID{
+    int32 ID = 1;
+}
+
+message Singer{
+    int32  ID     = 1;
+    string name   = 2;
+    bool   gender = 3;
+    double height = 4;
+}
+
+message Song{
+    int32  ID     = 1;
+    string name   = 2;
+    Singer singer = 3;
+}
+
+message SongList{
+    repeated Song songs = 1;
+}
