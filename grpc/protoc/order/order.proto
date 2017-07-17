@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package order;
+
+import "common/common.proto";
+import "data/ordervo/ordervo.proto";
+
+enum PointType {
+    None = 0;       // 没有使用
+    FroadBean = 1;  // 联盟积分(方豆)
+    BankBean = 2;   // 银行积分
+}
+
+message Order {
+    ordervo.OrderVo order = 1;
+    repeated ordervo.SuborderVo suborders = 2;
+    repeated ordervo.SuborderProductVo suborderProducts = 3;
+}
+
+message OrderReq {
+    string orderID = 1;
+    string clientID = 2;
+    int64 memberCode = 3;
+}
+
+message OrderRslt {
+    /**
+     * 订单服务返回结果
+     */
+    common.Rslt rslt = 1;
+    /**
+     * 订单服务返回结果
+     */
+    repeated Order orders = 2;
+}
+
+service OrderService {
+    rpc getOrderDetail (OrderReq) returns (OrderRslt) {}
+    rpc
+}

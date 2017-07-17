@@ -1,0 +1,199 @@
+syntax = "proto3";
+
+package ordervo;
+
+message OrderVo {
+    string orderId = 1;
+    int64 memberCode = 2;
+    string channel = 3;
+    double totalAmount = 4;
+    double totalFreight = 5;
+    double vipDiscount = 6;
+    double cashAmount = 7;
+    double pointAmount = 8;
+    int32 pointRate = 9;
+    int32 orderStatus = 10;
+    int32 recvAreaId = 11;
+    string recvAddress = 12;
+    int32 payMethod = 13;
+    int32 payStartTime = 14;
+    int32 payEndTime = 15;
+    int32 createTime = 16;
+    int32 updateTime = 17;
+    int32 willBeClosedAt = 18;
+    string redPacketID = 19;
+    double redPacketDenomination = 20;
+    int32 pointType = 21;
+    string redPacketActivityID = 22;
+    string coveredRedPacketID = 23;
+    double redPacketUsedAmount = 24;
+    int32 platform = 25; // 平台 1-APP 2-微信
+    int32 redPacketType = 26; // 红包类型 0-代金券 1-折扣券
+    double redPacketDiscountRate = 27;
+}
+
+message SuborderVo{
+    /**
+    * 子订单ID
+    */
+    string suborderId = 1;
+    /**
+    * 大订单id
+    */
+    string orderId = 2;
+    /**
+    * 用户ID
+    */
+    int64 memberCode = 3;
+    /**
+    * 渠道 ID对应客户端ID（client_id）
+    */
+    string channel = 4;
+    /**
+    *供应商ID
+    */
+    string merchantId = 5;
+    /**
+    * 供应商Name
+    */
+    string merchantName = 6;
+    /**
+    * 子订单商品总价
+    */
+    double suborderPrice = 7;
+    /**
+    * 运费
+    */
+    double freight = 8;
+    /**
+    * 创建时间
+    */
+    int32 createTime = 9;
+    /**
+    *  更新时间
+    */
+    int32 updateTime = 10;
+}
+
+message SuborderProductVo{
+    /**
+    *订单ID
+     */
+    string suborderId = 1;
+    /**
+    *商品ID
+    */
+    string productId = 2;
+    /**
+    *订单ID
+    */
+    string orderId = 3;
+    /**
+    *member_code
+    */
+    int64 memberCode = 4;
+    /**
+    *商品名称
+    */
+    string productName = 5;
+    /**
+    * 商品类型
+    **/
+    int32 productType = 6;
+    /**
+    * 普通单价
+    */
+    double unitPrice = 7;
+    /**
+    * 普通购买数量
+    */
+    int32 quantity = 8;
+    /**
+    * Vip 单价
+    */
+    double vipUnitPrice = 9;
+    /**
+    *VIP购买数量
+    */
+    int32 vipQuantity = 10;
+    /**
+    *商品图片URL
+    */
+    string imgUrl = 11;
+    /**
+    * 渠道
+    */
+    string channel = 12;
+    /**
+    * 预计发货时间
+    */
+    int32 deliveryTime = 13;
+    /**
+    *shipping_id
+    */
+    int32 shippingId = 14;
+    /**
+    * refund_id
+    */
+    string refundId = 15;
+    /**
+    * 退款类型
+    */
+    int32 refundType = 16;
+    /**
+    * 创建时间
+    */
+    int32 createTime = 17;
+    /**
+    * 更新时间
+    */
+    int32 updateTime = 18;
+    /**
+    * 确认物流状态
+    */
+    int32 confirmState = 19;
+    /**
+    * 确认物流状态时间
+    */
+    int32 confirmTime = 20;
+    /**
+    * 拆单现金值
+    */
+    double cashAmount = 21;
+    /**
+    * 拆单积分值
+    **/
+    double pointAmount = 22;
+    /**
+    * 积分类型
+    **/
+    int32 pointType = 23;
+    /**
+    * 积分现金兑换比率
+    */
+    int32 pointRate = 24;
+    /**
+    * 积分价值（抵扣现金额）
+    */
+    double pointValue = 25;
+    /**
+    * 红包抵扣现金额
+    */
+    double redPacketValue = 26;
+    /**
+    * 商品全称
+    */
+    string productFullName = 27;
+    /**
+     *兑换积分价格
+     */
+    double exchangePointPrice = 28;
+    /**
+     *兑换现金价格
+     */
+    double exchangeCashPrice = 29;
+    /*
+     * 售后详情
+     */
+    string afterSales = 30;
+}

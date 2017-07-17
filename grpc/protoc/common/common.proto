@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package common;
+
+message Rslt {
+    /**
+     * 返回结果值
+     */
+    int32 rslt = 1;
+    /**
+     * 描述
+     */
+    string description = 2;
+}
